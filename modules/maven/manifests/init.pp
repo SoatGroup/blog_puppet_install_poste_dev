@@ -3,7 +3,7 @@ class maven($source,
 	$maven_home,
 	$trigramme) {
 	
-	notify {"Installing Maven-$trigramme-...":}
+	notify {"Installing Maven-$trigramme-+${::username}+...":}
 	
 	exec { "7z.exe x -o$target $source":
 		cwd => 'c:\\Program Files\\7-Zip\\',

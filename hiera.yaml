@@ -4,5 +4,5 @@
 :yaml:
   :datadir: hieradata
 :hierarchy:
-  - users/users
+  - users/%{username}
   - common
