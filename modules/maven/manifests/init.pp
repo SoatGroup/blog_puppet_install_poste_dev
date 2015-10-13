@@ -3,6 +3,8 @@ class maven($source,
 	$maven_home,
 	$trigramme) {
 	
+	require 7zip
+	
 	notify {"Installing Maven-$trigramme-+${::username}+...":}
 	
 	exec { "7z.exe x -o$target $source":
@@ -17,7 +19,12 @@ class maven($source,
 	}
 	windows_env{ "PATH=%MAVEN_HOME%\\bin": }
 	
-	file { "C:\\Users\\formation\\.m2\\settings_gmi.xml":
+	file { "C:\\Users\\${::username}\\.m2\\":
+		ensure => directory,
+		source_permissions => ignore,
+	}
+	
+	file { "C:\\Users\\${::username}\\.m2\\settings_gmi.xml":
 		content => template('maven/settings.xml.erb'),
 	}
 }
